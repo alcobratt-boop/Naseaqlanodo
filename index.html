@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نسق - طلب غسيل الملابس</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #0078D4;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: right;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #0078D4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        .footer {
+            margin-top: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>نسق - طلب غسيل الملابس</h1>
+        <p>يرجى تعبئة التفاصيل أدناه، ثم الضغط على زر "إرسال التفاصيل عبر واتساب" لإرسال طلبك.</p>
+
+        <form id="laundryForm">
+            <label for="customerCode">كود العميل:</label>
+            <input type="text" id="customerCode" name="customerCode" required>
+
+            <label for="customerName">اسم العميل:</label>
+            <input type="text" id="customerName" name="customerName" required>
+
+            <label for="numberOfItems">عدد القطع:</label>
+            <input type="number" id="numberOfItems" name="numberOfItems" required>
+
+            <label for="clothingType">نوع الملابس:</label>
+            <input type="text" id="clothingType" name="clothingType" required>
+
+            <label for="additionalNotes">ملاحظات إضافية:</label>
+            <input type="text" id="additionalNotes" name="additionalNotes">
+
+            <button type="button" onclick="sendToWhatsApp()">إرسال التفاصيل عبر واتساب</button>
+        </form>
+
+        <div class="footer">
+            <p>للتواصل عبر واتساب مباشرة: <a href="https://wa.me/96877377475" target="_blank">0096877377475</a></p>
+        </div>
+    </div>
+
+    <script>
+        function sendToWhatsApp() {
+            const customerCode = document.getElementById('customerCode').value;
+            const customerName = document.getElementById('customerName').value;
+            const numberOfItems = document.getElementById('numberOfItems').value;
+            const clothingType = document.getElementById('clothingType').value;
+            const additionalNotes = document.getElementById('additionalNotes').value;
+
+            const message = `
+مرحباً، لدي طلب غسيل الملابس:
+- كود العميل: ${customerCode}
+- اسم العميل: ${customerName}
+- عدد القطع: ${numberOfItems}
+- نوع الملابس: ${clothingType}
+- ملاحظات: ${additionalNotes}
+            `;
+
+            const whatsappLink = `https://wa.me/96877377475?text=${encodeURIComponent(message)}`;
+            window.open(whatsappLink, '_blank');
+        }
+    </script>
+
+</body>
+</html>
